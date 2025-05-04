@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella Comparativa Punti di Accesso Veo</title>
+    <style>
+      /* Stili base per la tabella */
+      body {
+        font-family: sans-serif; /* Imposta un font di base se visualizzato da solo */
+        padding: 1em; /* Aggiunge un po' di spazio intorno se visualizzato da solo */
+        background-color: #f8f9fa; /* Sfondo leggermente grigio per la pagina */
+        color: #333; /* Colore testo scuro */
+      }
+      .table-container {
+          overflow-x: auto; /* Abilita lo scroll orizzontale su schermi piccoli */
+          -webkit-overflow-scrolling: touch; /* Scrolling più fluido su iOS */
+          background-color: #ffffff; /* Sfondo bianco per il contenitore della tabella */
+          border: 1px solid #dee2e6; /* Bordo sottile grigio */
+          border-radius: 8px; /* Angoli arrotondati per il contenitore */
+          box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Ombra leggera */
+          margin-bottom: 1.5em; /* Spazio sotto il contenitore */
+      }
+      .tabella-accesso-veo {
+        border-collapse: collapse; /* Unisce i bordi delle celle */
+        width: 100%;            /* Occupa tutta la larghezza del contenitore */
+        min-width: 800px;       /* Larghezza minima per evitare eccessiva compressione */
+      }
+      .tabella-accesso-veo caption {
+        caption-side: top;     /* Posiziona la didascalia sopra */
+        text-align: left;         /* Allinea a sinistra */
+        font-size: 1.2em;         /* Dimensione maggiore per la didascalia */
+        font-weight: bold;        /* Grassetto per la didascalia */
+        color: #495057;           /* Colore testo più scuro per la didascalia */
+        padding: 0.8em 1em;       /* Padding per la didascalia */
+        background-color: #f1f3f5; /* Sfondo leggermente grigio per la didascalia */
+        border-bottom: 2px solid #dee2e6; /* Linea di separazione sotto la didascalia */
+        border-top-left-radius: 8px; /* Arrotonda angolo superiore sinistro */
+        border-top-right-radius: 8px; /* Arrotonda angolo superiore destro */
+      }
+      .tabella-accesso-veo th,
+      .tabella-accesso-veo td {
+        border: 1px solid #dee2e6; /* Bordo grigio chiaro per celle e intestazioni */
+        padding: 12px 15px;     /* Spaziatura interna più generosa */
+        text-align: left;       /* Allineamento testo a sinistra */
+        vertical-align: middle; /* Allineamento verticale al centro */
+        font-size: 0.95em;      /* Dimensione font leggermente ridotta per più contenuto */
+      }
+      .tabella-accesso-veo thead th {
+        background-color: #e9ecef; /* Sfondo grigio chiaro per l'intestazione */
+        font-weight: 600;         /* Peso del font semi-grassetto */
+        color: #495057;           /* Colore testo più scuro */
+        white-space: nowrap;      /* Evita che le intestazioni vadano a capo facilmente */
+        position: sticky;         /* Rende l'intestazione fissa durante lo scroll verticale (se necessario) */
+        top: 0;                   /* Necessario per sticky header */
+        z-index: 1;               /* Assicura che l'header sia sopra il contenuto */
+      }
+      /* Stile per la prima colonna (intestazioni di riga) */
+      .tabella-accesso-veo tbody th[scope="row"] {
+        font-weight: 600;         /* Rendi grassetto le etichette dei punti di accesso */
+        background-color: #f8f9fa; /* Sfondo leggermente diverso per la prima colonna */
+        white-space: nowrap;      /* Evita a capo per i punti di accesso */
+        color: #212529;
+      }
+       /* Stile per righe alternate (zebra striping) per migliore leggibilità */
+      .tabella-accesso-veo tbody tr:nth-child(even) {
+        background-color: #f8f9fa; /* Sfondo leggermente grigio per righe pari */
+      }
+      .tabella-accesso-veo tbody tr:hover {
+        background-color: #e9ecef; /* Evidenzia la riga al passaggio del mouse */
+      }
+
+      /* Stili specifici per alcune colonne per migliorare leggibilità */
+       .tabella-accesso-veo td:nth-child(5), /* Risoluzione */
+       .tabella-accesso-veo td:nth-child(6), /* Durata */
+       .tabella-accesso-veo td:nth-child(8), /* Costo */
+       .tabella-accesso-veo td:nth-child(9) { /* Quota */
+          text-align: center; /* Centra il testo per dati concisi */
+          white-space: nowrap;
+       }
+       .tabella-accesso-veo td:nth-child(4) { /* Controllo Parametri */
+          text-align: center;
+       }
+
+       /* Rimuove arrotondamento inferiore se la didascalia è in alto */
+       .tabella-accesso-veo caption + thead tr:first-child th:first-child {
+           border-top-left-radius: 0;
+       }
+       .tabella-accesso-veo caption + thead tr:first-child th:last-child {
+           border-top-right-radius: 0;
+       }
+       /* Arrotonda gli angoli inferiori dell'ultima riga */
+       .tabella-accesso-veo tbody tr:last-child th:first-child {
+           border-bottom-left-radius: 8px;
+       }
+       .tabella-accesso-veo tbody tr:last-child td:last-child {
+           border-bottom-right-radius: 8px;
+       }
+
+    </style>
+</head>
+<body>
+
+    <h1>Tabella Comparativa Punti di Accesso Veo</h1>
+
+    <div class="table-container">
+        <table class="tabella-accesso-veo">
+          <caption>Confronto tra le diverse modalità di accesso a Veo</caption>
+          <thead>
+            <tr>
+              <th scope="col">Punto di Accesso</th>
+              <th scope="col">Utente Target</th>
+              <th scope="col">Metodo Accesso</th>
+              <th scope="col">Controllo Parametri</th>
+              <th scope="col">Risoluzione Attuale</th>
+              <th scope="col">Durata Attuale</th>
+              <th scope="col">Modello Prezzo</th>
+              <th scope="col">Costo Veo 2</th>
+              <th scope="col">Quota Mensile (se app.)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Vertex AI</th>
+              <td>Enterprise/Sviluppatori</td>
+              <td>API/SDK/Console</td>
+              <td>Alto</td>
+              <td>720p</td>
+              <td>8 sec</td>
+              <td>Pay-per-use</td>
+              <td>$0.50 / sec</td>
+              <td>N/A (limiti API)</td>
+            </tr>
+            <tr>
+              <th scope="row">Gemini Advanced (Diretto)</th>
+              <td>Individui/Prosumer/Studenti</td>
+              <td>UI (Web/Mobile)</td>
+              <td>Basso</td>
+              <td>720p</td>
+              <td>8 sec</td>
+              <td>Abbonamento</td>
+              <td>Incluso</td>
+              <td>Sì (~30?)</td>
+            </tr>
+            <tr>
+              <th scope="row">Gemini API</th>
+              <td>Sviluppatori</td>
+              <td>API/SDK</td>
+              <td>Medio-Alto</td>
+              <td>720p</td>
+              <td>8 sec</td>
+              <td>Pay-per-use</td>
+              <td>$0.35 / sec</td>
+              <td>N/A (limiti API)</td>
+            </tr>
+            <tr>
+              <th scope="row">Whisk Animate (via Gemini Adv)</th>
+              <td>Individui/Creativi (Premium)</td>
+              <td>UI (Whisk/Labs)</td>
+              <td>Basso (prompt anim)</td>
+              <td>720p</td>
+              <td>8 sec</td>
+              <td>Abbonamento</td>
+              <td>Incluso</td>
+              <td>Sì (100/mese)</td>
+            </tr>
+            <tr>
+              <th scope="row">VideoFX (Labs)</th>
+              <td>Sperimentatori (Waitlist)</td>
+              <td>UI (VideoFX/Labs)</td>
+              <td>Medio</td>
+              <td>720p</td>
+              <td>8 sec</td>
+              <td>Gratuito (prev?)</td>
+              <td>Gratuito (prev?)</td>
+              <td>Sì (variabile?)</td>
+            </tr>
+          </tbody>
+        </table>
+    </div> </body>
+</html>
+```
+
+Questo codice HTML crea una tabella completa e ben formattata con i tuoi dati. Ho aggiunto:
+
+* **Struttura HTML Semantica:** Uso corretto di `<thead>`, `<tbody>`, `<th>` con attributi `scope` per l'accessibilità.
+* **CSS Incorporato:** Stili per bordi, padding, colori alternati (`zebra striping`), allineamenti e uno stile più moderno.
+* **Responsività:** La tabella scorrerà orizzontalmente su schermi piccoli grazie al `div.table-container` per evitare che il layout si rompa.
+* **Intestazione Fissa (Sticky):** L'intestazione della tabella (`<thead>`) rimarrà visibile durante lo scroll verticale di tabelle lunghe (utile se aggiungerai più righe).
+* **Commenti:** Spiegazioni nel codice HTML e CSS.
+
+Puoi copiare questo codice e incollarlo dove puoi inserire HTML nel tuo blog, oppure salvarlo come file `.html` per altri usi (come la conversione in PDF tramite la funzione di stampa del browse
